@@ -9,70 +9,135 @@ const main = document.querySelector("#main");
 
 //for getting user make async fn 
 
+// const getUser = async (username) => {
+//     const resposnse = await fetch(APIURL + username)
+//     const data = await resposnse.json()
+//     console.log(data)
+//     const card = `
+//   <div class="box">
+//     <div>
+//         <img class="avatar" src="${data.avatar_url
+//         } " alt="Florin Pop">
+
+//     </div>
+//     <div class="user-info">
+//         <h2>${data.login}</h2>
+//         <p> ${data.bio}</p>
+
+//         <ul class="info">
+
+//         <li>${data.followers}<strong>Followers</strong></li>
+//         <li>${data.following}<strong>Following</strong></li>
+//         <li>${data.public_repos}<strong>Repos</strong></li>
+//         </ul>
+
+
+
+//         <div id="repos">
+
+//         </div>
+//     </div>
+// </div> 
+//     `
+//     main.innerHTML = card
+//     getrepoes(username)
+
+// }
+// //int call 
+// getUser("Shivam-Mishra20")
+
+
+
+// // get repoes and showing repoes
+
+// const getrepoes = async (username) => {
+//     const repo = document.querySelector('#repos')
+//     const resposnse = await fetch(APIURL + username + '/repos')
+//     const data = await resposnse.json()
+//     console.log(data)
+
+//     data.forEach(
+
+//         (item) => {
+//         const elm = document.createElement('a')
+//         elm.classList.add('repo');
+//         elm.innerText=item.name
+//         elm.href=item.html_url
+//         repo.append(elm)
+//         elm.target="blank"
+
+
+
+//         }
+
+//     )
+
+// }
+
+
 const getUser = async (username) => {
-    const resposnse = await fetch(APIURL + username)
-    const data = await resposnse.json()
-    console.log(data)
+    const response = await fetch(APIURL + username)
+    const data = await response.json()
     const card = `
-  <div class="box">
+    <div class="box">
+
     <div>
-        <img class="avatar" src="${data.avatar_url
-        } " alt="Florin Pop">
-
+    <img  class="avatar"src="${data.avatar_url
+        } " alt="" />
     </div>
+
     <div class="user-info">
-        <h2>${data.login}</h2>
-        <p> ${data.bio}</p>
+    <h2> ${data.login}</h2>
+    <p>${data.bio}</p>
 
-        <ul class="info">
-
-        <li>${data.followers}<strong>Followers</strong></li>
+    <ul class= "info">
+    <li>${data.followers}<strong>Followers</strong></li>
         <li>${data.following}<strong>Following</strong></li>
         <li>${data.public_repos}<strong>Repos</strong></li>
-        </ul>
+  
+    
+    </ul>
+
+    <div id="repos">
 
 
-
-        <div id="repos">
-
-        </div>
+    
     </div>
-</div> 
+    
+    </div>
+    </div>
+    
     `
+
     main.innerHTML = card
     getrepoes(username)
-
 }
 //int call 
-getUser("Shivam-Mishra20")
+getUser('Shivam-Mishra20')
 
-
-
-// get repoes and showing repoes
-
+// for getrepoes 
 const getrepoes = async (username) => {
     const repo = document.querySelector('#repos')
-    const resposnse = await fetch(APIURL + username + '/repos')
-    const data = await resposnse.json()
+
+    const response = await fetch(APIURL + username + "/repos")
+    const data = await response.json()
     console.log(data)
+    data.forEach((element) => {
 
-    data.forEach(
-        
-        (item) => {
-        const elm = document.createElement('a')
-        elm.classList.add('repo');
-        elm.innerText=item.name
-        elm.href=item.html_url
+        const elm = document.createElement("a")
+        elm.classList.add("repo")
+        elm.innerText = element.name
+        elm.href = element.html_url
+
         repo.append(elm)
-        elm.target="blank"
+        elm.target = "blank"
 
-             
 
-        }
-         
-    )
+    });
 
 }
+
+
 
 const formSubmit = () => {
     if (search.value != "") {

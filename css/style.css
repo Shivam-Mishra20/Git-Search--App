@@ -21,13 +21,13 @@ body {
 
 input {
     background-color: #4c2885;
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
     box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(0, 0, 0, 0.1);
     color: white;
     font-family: inherit;
     font-size: 1rem;
-    padding: 1rem;
+    padding: 1rem ;
     margin-top: 20px;
     margin-bottom: 2rem;
     max-width:  auto;
@@ -119,10 +119,10 @@ input:focus {
 }
 @media (max-width:582px){
     .box{
-         width:  380px;
+         width:  375px;
         padding:  10px;
         padding-left: 2px;
-        margin: 20px;
+        margin: auto;
         font-size: 12px;
 
     }
